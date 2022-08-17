@@ -12,8 +12,8 @@ const form = document.querySelector('form')
 
 //carregar e mapear links
 async function load() {
-    const res = await fetch("http://localhost:3000/").then((data) => data.json())
-    
+    const res = await fetch("http://localhost:5000/")
+    .then((data) => data.json())
     res.urls.map(({name, url}) => addElement({name, url}))
 }
 
