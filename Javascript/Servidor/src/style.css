@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+header{
+    margin: 30px;
+    padding: 10px;
+}
+
+body{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s linear;
+}
+
+main{
+    padding: 10px;
+}
+
+/*tema escuro*/
+body.dark-theme{
+    color:white;
+    background: black;
+}
+
+/*conteúdo da header*/
+.checkbox {
+	opacity: 0;
+	position: absolute;
+}
+
+.label {
+	background-color: #111;
+	border-radius: 50px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 5px;
+	position: relative;
+	height: 26px;
+	width: 50px;
+	transform: scale(1.5);
+}
+
+.label .ball {
+	background-color: #fff;
+	border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	height: 22px;
+	width: 22px;
+	transform: translateX(0px);
+	transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+	transform: translateX(24px);
+}
+
+
+.fa-moon {
+	color: #f1c40f;
+}
+
+.fa-sun {
+	color: #f39c12;
+}
+
+/*conteúdo da main*/
+.container {
+    width: 80%;
+    max-width: 400px;
+    margin: auto;
+}
+
+h1 {
+    text-align:center;
+    font-size: 3.4rem;
+}
+  
+input {
+    width: 100%;
+    padding: 8px 16px;
+    margin-bottom: 32px;
+    border-radius: 16px;
+    border: 1px solid;
+    outline: none;
+    font-size: 1.6rem;
+    font-weight:300;
+}
+  
+ul {
+    box-shadow: 0px 4px 8px -2px;
+    border-radius: 6px;
+    border: 1px solid;
+    padding: 16px;
+    font-size: 1.4rem;
+}
+  
+li {
+    list-style: none;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid;
+}
+  
+  
+a {
+    display: block;
+    text-decoration: none;  
+    padding: 16px 0;
+    font-size: 1.8rem;
+}
+  
+a:hover {
+    font-weight: bold;
+}
+  
+li:first-child,
+li:last-child {
+    border: none;
+}
+  
+li span {
+    cursor:pointer;
+}

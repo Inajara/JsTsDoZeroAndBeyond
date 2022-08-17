@@ -5,3 +5,4 @@ JavaScript e TypeScript, contendo tópicos como:
 
     -Event loops;
     -Modules;
+    -Http;
