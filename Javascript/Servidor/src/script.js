@@ -44,8 +44,8 @@ function removeElement(el) {
 }
 
 //validação do formulário
-form.addEventListener("submit", (event) => {
-    event.preventDefault();
+form.addEventListener("submit", async (event) => {
+    event.preventDefault()
 
     let value  = document.getElementById("myTextInputID").value
 
@@ -61,6 +61,20 @@ form.addEventListener("submit", (event) => {
         return alert("Digite a url da maneira correta")
 
     addElement({ name, url })
+    //enviar dados para a api
+    const response = await fetch("http://localhost:5000/", {
+        method: 'POST',
+        headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ name, url })
+    })
+    //permissão de acesso do front
+    response.writeHead(200, {
+        'Access-Control-Allow-Origin': '*'
+    })
+    return response
 
     input.value = ""
 })
