@@ -9,7 +9,7 @@ JavaScript e TypeScript, contendo os tópicos:
     - [x] Api;
     - [x] Consumo da api pelo frontend(cors);
     - [x] Fetch e promises;
-    - [] Axios vs fetch;
+    - [x] Axios vs fetch;
     - [x] MySQL e sequelize;
-    - [] TypeORM
+    - [] TypeORM;
     - [] MongoDb e mongoose;
