@@ -2,11 +2,10 @@ const express = require('express')
 const app = express()
 const morgan = require('morgan')
 const bodyParser = require('body-parser')
-const swaggerUi = require('swagger-ui-express')
-const swaggerDocument = require('./swagger.json')
 
-//swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+//imports
+const database = require('./database/database')
+const postRoutes = require('./routes/posts.routes')
 
 //analise de execução
 app.use(morgan('dev'))
@@ -24,21 +23,10 @@ app.use((req,res, next) => {
 })
 
 //rotas
-const rotaPalavras = require('./Routes/Palavras')
-app.use('/palavras', rotaPalavras)
-
-//tratamento de erros de rota
-app.use((req,res,next) => {
-    const erro = new Error('Palavra não encontrada')
-    erro.status = 404
-    next(erro)
+app.get('/', (req, res) => {
+    res.json({message: 'ok'})
 })
 
-app.use((error,req,res,next) => {
-    res.status(error.status || 500)
-    return res.send({
-        message: error.message
-    })
-})
+app.use('/posts', postRoutes)
 
 module.exports = app
