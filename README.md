@@ -13,5 +13,5 @@ JavaScript e TypeScript, contendo os tópicos:
     - [x] MySQL e sequelize;
     - [] Swagger;
     - [] JWT;
-    - [] MongoDb e mongoose;
+    - [x] MongoDb e mongoose;
     - [] Messageria
