@@ -152,6 +152,9 @@ const UsuarioController = {
     async novoUsuario(req: Request, res: Response) {
         try {
             const { nome, nome_usuario, email, senha, data_nasc, moderador, especialidade, localizado_em } = req.body
+
+            const basePath = `${req.protocol}://${req.get("host")}/public/`
+            let filename = req.file.filename
             
             let dataCheck = new Date(data_nasc)
             if( !(dataCheck.getTime() <= Date.now() - 6570 * (24 * 60 * 60 * 1000) )) {
@@ -174,7 +177,8 @@ const UsuarioController = {
                 moderador,
                 especialidade, 
                 data_nasc, 
-                localizado_em
+                localizado_em,
+                imagem: `${basePath}${filename}`
             })
             let usuario = await novoUsuario.save()
             return res.json(usuario)
@@ -215,6 +219,8 @@ const UsuarioController = {
         try {
             const { id } = req.params
             const { nome, nome_usuario, email, senha, moderador, especialidade, localizado_em } = req.body
+            const basePath = `${req.protocol}://${req.get("host")}/public`
+            let filename = req.file.filename
             let usuario = await usuarioModel.findByIdAndUpdate(id, {
                 nome: nome,
                 nome_usuario: nome_usuario,
@@ -222,7 +228,8 @@ const UsuarioController = {
                 senha: senha,
                 moderador: moderador,
                 especialidade: especialidade,
-                localizado_em: localizado_em
+                localizado_em: localizado_em,
+                imagem: `${basePath}${filename}`
             })
             return res.json(usuario)
         } catch (error) {

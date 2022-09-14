@@ -40,6 +40,7 @@ const usuarioModel = new Schema({
   especialidade: {
     type: String
   },
+  imagem: String,
     membro_desde:{
       type: Date,
       default: Date.now

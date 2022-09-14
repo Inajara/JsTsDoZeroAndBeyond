@@ -49,12 +49,12 @@ router.get('/posts/titulo/:titulo', /* checaToken, */ PostController.postPorTitu
 router.get('/comentarios/nome_usuario/:nome_usuario', /* checaToken, */ ComentarioController.comentarioPorUsuario)
 router.get('/comentarios/post/:post', /* checaToken, */ ComentarioController.comentarioPorPost)
 
-router.post('/usuarios', UsuarioController.novoUsuario)
+router.post('/usuarios', uploadOptions.single('imagem'), UsuarioController.novoUsuario)
 router.post('/posts', uploadOptions.single('imagem'), PostController.novoPost)
 router.post('/comentarios', ComentarioController.novoComentario)
 
-router.patch('/usuarios/:id', UsuarioController.atualizaUsuario)
-router.patch('/posts/:id', multer(uploadOptions).single('imagem'), PostController.atualizaPost)
+router.patch('/usuarios/:id', uploadOptions.single('imagem'), UsuarioController.atualizaUsuario)
+router.patch('/posts/:id', uploadOptions.single('imagem'), PostController.atualizaPost)
 router.patch('/comentarios/:id', ComentarioController.atualizaComentario)
 
 router.delete('/usuarios/:id', /* checaToken, */ UsuarioController.excluiUsuario)
