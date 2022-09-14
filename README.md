@@ -11,7 +11,7 @@ JavaScript e TypeScript, contendo os tópicos:
     - [x] Fetch e promises;
     - [x] Axios vs fetch;
     - [x] MySQL e sequelize;
-    - [] Swagger;
-    - [] JWT;
+    - [x] Swagger;
+    - [x] JWT;
     - [x] MongoDb e mongoose;
     - [] Messageria
