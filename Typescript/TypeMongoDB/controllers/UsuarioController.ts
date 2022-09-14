@@ -102,7 +102,7 @@ const UsuarioController = {
  *   get:
  *     tags: [Usuários]
  *     parameters:
- *       - in: query
+ *       - in: path
  *         name: nome_usuario
  *         schema:
  *           type: string

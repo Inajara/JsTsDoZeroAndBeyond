@@ -87,12 +87,12 @@ const PostController = {
     },
 /**
  * @swagger
- * /posts/{_id}:
+ * /posts/titulo/{titulo}:
  *   get:
  *     tags: [Posts]
  *     parameters:
  *       - in: path
- *         name: _id
+ *         name: titulo
  *         schema:
  *           type: string
  *         required: true
@@ -121,7 +121,7 @@ const PostController = {
  *   get:
  *     tags: [Posts]
  *     parameters:
- *       - in: query
+ *       - in: path
  *         name: nome_usuario
  *         schema:
  *           type: string

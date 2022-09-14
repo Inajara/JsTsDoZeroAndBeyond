@@ -8,7 +8,7 @@ import bodyParser from 'body-parser'
 import cors from 'cors'
 import path from 'path'
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 3000
 const app = express()
 
 //conexao com banco

@@ -91,7 +91,7 @@ const ComentarioController = {
  *     tags: [Comentários]
  *     parameters:
  *       - in: path
- *         name: _id
+ *         name: nome_usuario
  *         schema:
  *           type: string
  *         required: true
@@ -117,12 +117,12 @@ const ComentarioController = {
 },
 /**
  * @swagger
- * /comentarios/nome_usuario/{nome_usuario}:
+ * /comentarios/post/{post}:
  *   get:
  *     tags: [Comentários]
  *     parameters:
  *       - in: path
- *         name: _id
+ *         name: post
  *         schema:
  *           type: string
  *         required: true
