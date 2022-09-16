@@ -217,12 +217,17 @@ const PostController = {
         try {
             const { id } = req.params
             const { titulo, texto } = req.body
-            const basePath = `${req.protocol}://${req.get("host")}/public`
-            let filename = req.file.filename
+           
+            const postExistente = await postModel.findById(id)
+
+            if(!postExistente) {
+                return res.sendStatus(404).send({ message: Error })
+            }
+
             let post = await postModel.findByIdAndUpdate(id, {
                 titulo: titulo,
                 texto: texto,
-                imagem: `${basePath}${filename}`
+                imagem: postExistente.imagem
             })
         return res.json(post)
         } catch (error) {

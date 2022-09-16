@@ -139,8 +139,8 @@ const ComentarioController = {
  async comentarioPorPost(req: Request, res: Response) {
     try {
         const { post } = req.params
-        const postagem = await PostModel.findOne({ post: post })
-        let comentario = await comentarioModel.find({ post: postagem._id }).populate('nome_usuario').populate('post')
+        //const postagem = await PostModel.findOne({ post: post })
+        let comentario = await comentarioModel.find({ post: post }).populate('nome_usuario').populate('post')
         return res.json(comentario)
     } catch (error) {
         return res.status(404).send({ message: error.message })

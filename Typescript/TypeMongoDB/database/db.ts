@@ -6,6 +6,6 @@ export const AppDbSettings = mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true,
     dbName: "testeapi",
-  })
+  }, { useFindAndModify: false })
 .then(() => { console.log("Conectado ao banco com sucesso") })
 .catch((err) => { console.log(err) })

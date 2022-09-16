@@ -219,8 +219,13 @@ const UsuarioController = {
         try {
             const { id } = req.params
             const { nome, nome_usuario, email, senha, moderador, especialidade, localizado_em } = req.body
-            const basePath = `${req.protocol}://${req.get("host")}/public`
-            let filename = req.file.filename
+            
+            const usuarioExistente = await usuarioModel.findById(id)
+
+            if(!usuarioExistente) {
+                return res.sendStatus(404).send({ message: Error })
+            }
+
             let usuario = await usuarioModel.findByIdAndUpdate(id, {
                 nome: nome,
                 nome_usuario: nome_usuario,
@@ -229,7 +234,7 @@ const UsuarioController = {
                 moderador: moderador,
                 especialidade: especialidade,
                 localizado_em: localizado_em,
-                imagem: `${basePath}${filename}`
+                imagem: usuarioExistente.imagem
             })
             return res.json(usuario)
         } catch (error) {

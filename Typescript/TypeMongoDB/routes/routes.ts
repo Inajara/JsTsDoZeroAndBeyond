@@ -4,7 +4,6 @@ import PostController from "../controllers/PostController";
 import ComentarioController from "../controllers/ComentarioController";
 import UsuarioController from "../controllers/UsuarioController";
 import UsuarioAuthLogin from "../auth/UsuarioAuthLogin";
-import multer from 'multer';
 import { uploadOptions }  from '../middleware/uploadImagem';
 require('dotenv').config()
 
@@ -37,28 +36,28 @@ function checaToken(req: Request, res: Response, next) {
     }
 }
 
-router.get('/usuarios', /* checaToken, */ UsuarioController.listaUsuarios)
-router.get('/posts', /* checaToken, */ PostController.listaPosts)
-router.get('/comentarios', /* checaToken, */ ComentarioController.listaComentarios)
-router.get('/usuarios/:id', /* checaToken, */ UsuarioController.usuarioId)
-router.get('/posts/:id', /* checaToken, */ PostController.postId)
-router.get('/comentarios/:id', /* checaToken, */ ComentarioController.comentarioId)
-router.get('/usuarios/nome_usuario/:nome_usuario', /* checaToken, */ UsuarioController.usuarioNickname)
-router.get('/posts/nome_usuario/:nome_usuario', /* checaToken, */ PostController.postPorUsuario)
-router.get('/posts/titulo/:titulo', /* checaToken, */ PostController.postPorTitulo)
-router.get('/comentarios/nome_usuario/:nome_usuario', /* checaToken, */ ComentarioController.comentarioPorUsuario)
-router.get('/comentarios/post/:post', /* checaToken, */ ComentarioController.comentarioPorPost)
+router.get('/usuarios', checaToken, UsuarioController.listaUsuarios)
+router.get('/posts', checaToken, PostController.listaPosts)
+router.get('/comentarios', checaToken, ComentarioController.listaComentarios)
+router.get('/usuarios/:id', checaToken, UsuarioController.usuarioId)
+router.get('/posts/:id', checaToken, PostController.postId)
+router.get('/comentarios/:id', checaToken, ComentarioController.comentarioId)
+router.get('/usuarios/nome_usuario/:nome_usuario', checaToken, UsuarioController.usuarioNickname)
+router.get('/posts/nome_usuario/:nome_usuario', checaToken, PostController.postPorUsuario)
+router.get('/posts/titulo/:titulo', checaToken, PostController.postPorTitulo)
+router.get('/comentarios/nome_usuario/:nome_usuario', checaToken, ComentarioController.comentarioPorUsuario)
+router.get('/comentarios/post/:post', checaToken, ComentarioController.comentarioPorPost)
 
 router.post('/usuarios', uploadOptions.single('imagem'), UsuarioController.novoUsuario)
-router.post('/posts', uploadOptions.single('imagem'), PostController.novoPost)
-router.post('/comentarios', ComentarioController.novoComentario)
+router.post('/posts', checaToken, uploadOptions.single('imagem'), PostController.novoPost)
+router.post('/comentarios', checaToken, ComentarioController.novoComentario)
 
-router.patch('/usuarios/:id', uploadOptions.single('imagem'), UsuarioController.atualizaUsuario)
-router.patch('/posts/:id', uploadOptions.single('imagem'), PostController.atualizaPost)
-router.patch('/comentarios/:id', ComentarioController.atualizaComentario)
+router.patch('/usuarios/:id', checaToken, uploadOptions.single('imagem'), UsuarioController.atualizaUsuario)
+router.patch('/posts/:id', checaToken, uploadOptions.single('imagem'), PostController.atualizaPost)
+router.patch('/comentarios/:id', checaToken, ComentarioController.atualizaComentario)
 
-router.delete('/usuarios/:id', /* checaToken, */ UsuarioController.excluiUsuario)
-router.delete('/posts/:id', PostController.excluiPost)
-router.delete('/comentarios/:id', ComentarioController.excluiComentario)
+router.delete('/usuarios/:id', checaToken, UsuarioController.excluiUsuario)
+router.delete('/posts/:id', checaToken, PostController.excluiPost)
+router.delete('/comentarios/:id', checaToken, ComentarioController.excluiComentario)
 
 export default router
